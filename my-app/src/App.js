@@ -1,7 +1,8 @@
 import React from 'react';
-import './App.css';
-
+import ReactDOM from 'react-dom';
 import FormComponent from './components/FormComponent'
+
+import './App.css';
 
 function App() {
   return (
@@ -11,5 +12,8 @@ function App() {
     </div>
   );
 }
+
+const rootElement = document.getElementById('root');
+ReactDOM.render(<App />, rootElement)
 
 export default App;
