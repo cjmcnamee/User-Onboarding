@@ -19,11 +19,20 @@ function FormComponent({ errors, touched, values, handleSubmit, status }) {
       <h2>Sign Up</h2>
       <Form>
         <Field type="text" name="name" placeholder="Name" />
+          {touched.name && errors.name && (
+            <p className="error">{errors.name}</p>
+          )}
 
         <Field type="email" name="email" placeholder="Email" />
+          {touched.email && errors.email && (
+            <p className="error">{errors.email}</p>
+          )}
 
         <Field type="password" name="password" placeholder="Password" />
-
+          {touched.password && errors.password && (
+            <p className="error">{errors.password}</p>
+          )}
+          
         <label>
           Terms of Service
           <Field
