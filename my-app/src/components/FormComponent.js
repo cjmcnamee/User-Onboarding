@@ -20,7 +20,6 @@ function FormComponent({ errors, touched, values, handleSubmit, status }) {
       <Form>
         <Field type="text" name="name" placeholder="Name" />
 
-
         <Field type="email" name="email" placeholder="Email" />
 
         <Field type="password" name="password" placeholder="Password" />
@@ -34,7 +33,13 @@ function FormComponent({ errors, touched, values, handleSubmit, status }) {
           />
           <span className="checkmark" />
         </label>
+
+        <button type="submit">Submit</button>
       </Form>
+
+      {coolForm.map(cool => (
+        <p key={cool.id}>{cool.name} | {cool.email}</p>
+      ))}
     </div>
   )
 }
@@ -49,14 +54,20 @@ const FormikFormComponent = withFormik({
     };
   },
 
+  validationSchema: Yup.object().shape({
+    name: Yup.string().required(),
+    email: Yup.string().required(),
+    password: Yup.string().required()
+  }),
+
   handleSubmit(values, { setStatus }) {
     axios
-      .post('https://reqres.in/api/users')
+      .post('https://reqres.in/api/users', values)
       .then(res => {
         setStatus(res.data);
       })
       .catch(err => console.log(err.response))
   }
-})
+})(FormComponent);
 
-export default FormComponent;
+export default FormikFormComponent;
