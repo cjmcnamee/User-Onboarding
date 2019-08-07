@@ -21,13 +21,19 @@ function FormComponent({ errors, touched, values, handleSubmit, status }) {
         <Field type="text" name="name" placeholder="Name" />
 
 
-        <Field
+        <Field type="email" name="email" placeholder="Email" />
 
-        />
+        <Field type="password" name="password" placeholder="Password" />
 
-        <Field
-
-        />
+        <label>
+          Terms of Service
+          <Field
+            component="checkbox"
+            name="tos"
+            checked={values.tos}
+          />
+          <span className="checkmark" />
+        </label>
       </Form>
     </div>
   )
