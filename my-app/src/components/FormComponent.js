@@ -32,13 +32,14 @@ function FormComponent({ errors, touched, values, handleSubmit, status }) {
             <p className="error">{errors.password}</p>
           )}
 
-        <label className="input">
+        <label className="checkbox">
           Terms of Service
           <Field
             type="checkbox"
             name="tos"
             checked={values.tos}
           />
+          <span className="checkmark" />
         </label>
 
         <button className="input" type="submit">Submit</button>
