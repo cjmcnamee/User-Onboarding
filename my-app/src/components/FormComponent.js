@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
-import './FormComponent.css'
 
 function FormComponent({ errors, touched, values, handleSubmit, status }) {
   const [coolForm, setCoolForm] = useState([])
@@ -16,34 +15,33 @@ function FormComponent({ errors, touched, values, handleSubmit, status }) {
 
   return(
     <div className="Form">
-      <h2>Sign Up</h2>
-      <Form>
-        <Field type="text" name="name" placeholder="Name" />
+      <Form className="Form2">
+        <h2>Cool Form</h2>
+        <Field className="input" type="text" name="name" placeholder="Name" />
           {touched.name && errors.name && (
             <p className="error">{errors.name}</p>
           )}
 
-        <Field type="email" name="email" placeholder="Email" />
+        <Field className="input" type="email" name="email" placeholder="Email" />
           {touched.email && errors.email && (
             <p className="error">{errors.email}</p>
           )}
 
-        <Field type="password" name="password" placeholder="Password" />
+        <Field className="input" type="password" name="password" placeholder="Password" />
           {touched.password && errors.password && (
             <p className="error">{errors.password}</p>
           )}
-          
-        <label>
+
+        <label className="input">
           Terms of Service
           <Field
-            component="checkbox"
+            type="checkbox"
             name="tos"
             checked={values.tos}
           />
-          <span className="checkmark" />
         </label>
 
-        <button type="submit">Submit</button>
+        <button className="input" type="submit">Submit</button>
       </Form>
 
       {coolForm.map(cool => (
